@@ -12,31 +12,34 @@ public class BowlingGameTest {
     protected void setUp() throws Exception {
         g = new Game();
     }
-    @Test
-    public void GutterGame() throws Exception{
 
-        rollMany(20, 0);
-        com.drpicox.bowlingKata.Game g=new com.drpicox.bowlingKata.Game();
-        for(int i=0; i<20; i++){
-            g.roll(0);
-        }
-        assertThat(g.score(), is(0));
-    }
-
-    @Test
     private void rollMany(int n, int pins) {
         for (int i = 0; i < n; i++)
             g.roll(pins);
     }
 
     @Test
-    public void testAllOnes(int n, int pins) throws Exception{
-        //Test roll game
-        for(int i=0;i<20;i++){
-            g.roll(1);
-        }
+    public void testGutterGame() throws Exception{
+
+        rollMany(20, 0);
+        assertThat(g.score(), is(0));
+    }
+
+
+    @Test
+    public void testAllOnes() throws Exception{
+        rollMany(20,1);
         assertThat(g.score(), is(20));
     }
+
+    /*public void testOneSpare() throws Exception {
+        g.roll(5);
+        g.roll(5); // spare
+        g.roll(3);
+        rollMany(17,0);
+        assertEquals(g.score(),16);
+    }*/
+
 
 
 
