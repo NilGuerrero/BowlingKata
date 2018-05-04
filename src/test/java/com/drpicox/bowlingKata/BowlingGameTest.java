@@ -7,8 +7,15 @@ import static org.junit.Assert.assertThat;
 
 
 public class BowlingGameTest {
+    private Game g;
+
+    protected void setUp() throws Exception {
+        g = new Game();
+    }
     @Test
     public void GutterGame() throws Exception{
+
+        rollMany(20, 0);
         com.drpicox.bowlingKata.Game g=new com.drpicox.bowlingKata.Game();
         for(int i=0; i<20; i++){
             g.roll(0);
@@ -17,9 +24,14 @@ public class BowlingGameTest {
     }
 
     @Test
-    public void testAllOnes() throws Exception{
+    private void rollMany(int n, int pins) {
+        for (int i = 0; i < n; i++)
+            g.roll(pins);
+    }
+
+    @Test
+    public void testAllOnes(int n, int pins) throws Exception{
         //Test roll game
-        Game g=new Game();
         for(int i=0;i<20;i++){
             g.roll(1);
         }
